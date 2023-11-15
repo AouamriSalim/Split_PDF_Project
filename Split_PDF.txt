@@ -1,0 +1,20 @@
+The provided code is a Python script that uses the PyMuPDF library to split a PDF file based on specific text found on each page.
+ Here's a breakdown of the main functions and operations in the code:
+import fitz, re, os, pandas: The script imports the necessary libraries, including fitz for working with PDFs and pandas for handling Excel files.
+extract_text_from_pdf(pdf_path):
+ This function takes a PDF file path as input and extracts the text from each page of the PDF. 
+It then removes spaces from the extracted text and returns the concatenated text.
+split_pdf_by_document_names(pdf_path, excel_file, output_directory, image_path): 
+This function takes the PDF file path, an Excel file containing document names, an output directory path, and an image path as input. 
+It then iterates through each page of the PDF, extracts the text from the page, and checks if the document names from the Excel file are present in the extracted text.
+If a document name is found, it creates a new PDF document, inserts the corresponding page, adds an image to the page,
+ and saves the new PDF document with the document name and page number.
+It also updates a DataFrame with the split PDF names and email addresses, and saves the DataFrame to a new Excel file. 
+Finally, it identifies document names that were not found in the PDF and prints them.
+if name == 'main': 
+This block of code sets the input paths for the PDF, Excel file, output directory, and image, and then calls the split_pdf_by_document_names function with these inputs.
+The script effectively splits the PDF based on the presence of specific document names on each page, adds an image to the split pages, 
+and creates a new Excel file with the split PDF names and email addresses.
+The script uses the PyMuPDF library for PDF processing and pandas for Excel file manipulation. 
+It demonstrates how to automate the process of splitting a PDF file based on specific text and organizing the split files and related data.
+This code can be useful for automating the extraction and organization of specific content from large PDF documents based on predefined criteria.

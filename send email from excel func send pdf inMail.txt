@@ -1,0 +1,25 @@
+Summary
+The send_emails_from_excel function reads an Excel file containing recipient email addresses and PDF file names, and sends emails with the corresponding PDF attachments to each recipient using the send_email function.
+Example Usage
+send_emails_from_excel('data.xlsx', 'smtp.gmail.com', 465, 'username', 'password', 'sender@example.com')
+This code reads the 'data.xlsx' file, which contains recipient email addresses and PDF file names in columns 'Email Address' and 'PDF Name' respectively. It then sends emails with the corresponding PDF attachments to each recipient using the SMTP server 'smtp.gmail.com' on port 465, with the provided username, password, and sender email address.
+Code Analysis
+Inputs
+excel_file (string): The path to the Excel file containing recipient email addresses and PDF file names.
+smtp_server (string): The SMTP server address.
+smtp_port (int): The SMTP server port.
+username (string): The username for authentication with the SMTP server.
+password (string): The password for authentication with the SMTP server.
+sender (string): The email address of the sender.
+ 
+Flow
+Read the Excel file specified by excel_file using pd.read_excel and store the data in a DataFrame df.
+Iterate over each row in df using df.iterrows().
+Get the PDF file name from the 'PDF Name' column of the current row.
+Get the recipient email address from the 'Email Address' column of the current row.
+Construct the path to the PDF attachment using the pdf_path and the provided directory path.
+Create a list of attachments containing the PDF attachment path and the original file name.
+Call the send_email function with the SMTP server details, sender email address, recipient email address, and attachments list.
+ 
+Outputs
+None. The function sends emails with PDF attachments to the recipients specified in the Excel file.

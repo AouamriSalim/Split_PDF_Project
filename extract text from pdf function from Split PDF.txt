@@ -1,0 +1,20 @@
+Summary
+This code defines a function named extract_text_from_pdf that takes a PDF file path as input and returns the extracted text from the PDF file as output.
+Example Usage
+text = extract_text_from_pdf("path/to/pdf/file.pdf")
+print(text)
+Code Analysis
+Inputs
+pdf_path: a string representing the path to the PDF file.
+ 
+Flow
+Open the PDF file using the fitz library and assign it to the pdf_document variable.
+Initialize an empty string variable named text to store the extracted text.
+Iterate over each page in the PDF document.
+Load the current page using the load_page method of the pdf_document object.
+Get the text content of the current page using the get_text method and append it to the text variable.
+Replace any spaces in the extracted text with an empty string.
+Return the extracted text.
+ 
+Outputs
+text: a string representing the extracted text from the PDF file.

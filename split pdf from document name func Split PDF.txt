@@ -1,0 +1,39 @@
+Summary
+This function takes a PDF file, an Excel file, an output directory, and an image path as inputs. It splits the PDF into multiple smaller PDFs based on the document names specified in the Excel file. It also adds an image to each page of the new PDFs and saves them in the output directory. Finally, it creates a new Excel file with the names of the split PDFs and their corresponding email addresses.
+Example Usage
+split_pdf_by_document_names('input.pdf', 'input.xlsx', 'output_directory', 'image.png')
+Code Analysis
+Inputs
+pdf_path (string): The path of the PDF file to be split.
+excel_file (string): The path of the Excel file containing the document names.
+output_directory (string): The directory where the split PDFs and the new Excel file will be saved.
+image_path (string): The path of the image to be added to each page of the split PDFs.
+ 
+Flow
+Open the PDF file using the fitz library.
+Load the Excel file into a pandas DataFrame.
+Iterate over each page of the PDF.
+Extract the text from the page and remove spaces.
+Iterate over each row of the DataFrame.
+Check if the document name from the DataFrame is present in the extracted text.
+If the document name is found, create a new PDF document.
+Insert the current page of the original PDF into the new PDF.
+Define the coordinates for placing the image on the page.
+Add the image to the current page of the new PDF.
+Save the new PDF with the document name and page number as the file name.
+Append the document name and page number to the split list and the document name to the pdf name list.
+Close the new PDF document.
+Create a DataFrame with the split list as the 'PDF Name' column.
+Iterate over each row of the DataFrame again.
+Update the 'Email Address' column of the split DataFrame with the corresponding email address from the original DataFrame.
+Save the split DataFrame to a new Excel file.
+Create a list to store document names that were not split.
+Iterate over each row of the DataFrame again.
+Check if the document name is not in the pdf name list and not in the output directory.
+If the document name is not found, append it to the not split document names list.
+Print the list of document names that were not found in the PDF.
+ 
+Outputs
+The split PDFs saved in the output directory.
+The new Excel file with the names of the split PDFs and their corresponding email addresses.
+The list of document names that were not found in the PDF.

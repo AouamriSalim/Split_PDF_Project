@@ -1,0 +1,31 @@
+Summary
+The send_email function is responsible for sending an email with attachments using the SMTP protocol. It takes in the SMTP server details, authentication credentials, sender and recipient email addresses, and a list of attachments as inputs.
+Example Usage
+send_email("smtp.example.com", 587, "username", "password", "sender@example.com", "recipient@example.com", [("path/to/attachment.pdf", "attachment.pdf")])
+Code Analysis
+Inputs
+smtp_server (string): The address of the SMTP server.
+smtp_port (int): The port number of the SMTP server.
+username (string): The username for authentication with the SMTP server.
+password (string): The password for authentication with the SMTP server.
+sender (string): The email address of the sender.
+recipient (string): The email address of the recipient.
+attachments (list): A list of tuples, where each tuple contains the path to an attachment file and its original name.
+ 
+Flow
+Create a MIMEMultipart object to represent the email message.
+Set the sender, recipient, and subject of the email.
+Attach a plain text body to the email.
+Iterate over the attachments list.
+For each attachment, open the file in binary mode and create a MIMEApplication object with its contents.
+Set the Content-Disposition header of the attachment to include the original file name.
+Attach the MIMEApplication object to the email.
+Create an SMTP connection to the server using SSL/TLS.
+Authenticate with the server using the provided username and password.
+Convert the email message to a string.
+Send the email using the sendmail method of the SMTP server.
+Close the SMTP connection.
+Print a success message if the email was sent successfully, or an error message if it failed.
+ 
+Outputs
+None: The function does not return any value. It prints a success or error message to the console.
